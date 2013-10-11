@@ -1,5 +1,4 @@
-// var socket = io.connect('/');
-var ws = new WebSocket("ws://172.22.242.251:8888");
+var ws = new WebSocket("ws://172.22.242.251:8888"); // サーバーのIPを指定します
 var poi = $('.poi');
 var pX = 0;
 var pY = 0;
@@ -12,17 +11,15 @@ poi.css({ left: cX + 'px', top: cY + 'px' });
 pX = cX;
 pY = cY;
 
-
+// socket通信開始したらopenアラートを出します
 ws.addEventListener("open" , function(e){
 	alert("open");
 },false);
 
+// メッセージをサーバーから受け取った時の処理
 ws.addEventListener("message" , function(e){
-	console.log(e.data);
-	var parsedData = JSON.parse(e.data);
-
-//	var parsedData = JSON.parse(e);
-//	socket.on('devicemotion', function (e) {
+	// debug用
+	// console.log(e.data);
 	// if (e.acg.x > 0) {
 	// 	pX++;
 	// } else {
@@ -33,10 +30,12 @@ ws.addEventListener("message" , function(e){
 	// } else {
 	// 	pY--;
 	// }
+
+	// ポイを移動させます
+	var parsedData = JSON.parse(e.data);
 	pX += parsedData.data.acg.x + 2;
 	pY -= parsedData.data.acg.y + 2;
 	poi.css({ left: pX + 'px', top: pY + 'px' });
-//});	
 }, false);
 
 

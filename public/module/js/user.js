@@ -1,4 +1,3 @@
-// var socket = io.connect('/');
 var ws = new WebSocket("ws://172.22.242.251:8888");
 var acX = $('.acX').find('.text');
 var acY = $('.acY').find('.text');
@@ -10,15 +9,12 @@ var rrA = $('.rrA').find('.text');
 var rrB = $('.rrB').find('.text');
 var rrG = $('.rrG').find('.text');
 
-
-// socket.on('message', function (obj) {
-// 	console.log(obj);
-// });
-
+// socket通信が開始されたらアラートが出ます
 ws.addEventListener("open" , function(e){
 	alert("open");
 },false);
 
+// 加速度センサーがセンシングされたときの処理です（0.05秒くらい←超適当）
 window.addEventListener('devicemotion', function (e) {
 	var ac = e.acceleration;
 	acX.text(ac.x); //x方向の傾き加速度
@@ -35,6 +31,6 @@ window.addEventListener('devicemotion', function (e) {
 	rrB.text(rr.beta); //x軸の回転加速度
 	rrG.text(rr.gamma); //y軸の回転加速度
 
-//	socket.emit('devicemotion', { ac: ac, acg: acg, rr: rr });
+	// サーバーにデータ送ります
 	ws.send(JSON.stringify({"id": "game.locate", "data": {"ac":ac, "acg":acg, "rr": rr}}));
 });
