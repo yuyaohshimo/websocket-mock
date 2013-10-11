@@ -1,0 +1,27 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', './web/' ]
+2 info using npm@1.3.11
+3 info using node@v0.8.17
+4 verbose readDependencies using package.json deps
+5 verbose cache add [ './web/', null ]
+6 verbose cache add name=undefined spec="./web/" args=["./web/",null]
+7 verbose parsed url { pathname: './web/', path: './web/', href: './web/' }
+8 silly lockFile ffba606d-web ./web/
+9 verbose lock ./web/ /Users/A12669/.npm/ffba606d-web.lock
+10 silly lockFile ffba606d-web ./web/
+11 silly lockFile ffba606d-web ./web/
+12 error addLocal Could not install ./web/
+13 error Error: ENOENT, stat './web/'
+14 error If you need help, you may report this log at:
+14 error     <http://github.com/isaacs/npm/issues>
+14 error or email it to:
+14 error     <npm-@googlegroups.com>
+15 error System Darwin 11.4.2
+16 error command "node" "/usr/local/bin/npm" "install" "./web/"
+17 error cwd /usr/local/node/apps/websocket-test
+18 error node -v v0.8.17
+19 error npm -v 1.3.11
+20 error path ./web/
+21 error code ENOENT
+22 error errno 34
+23 verbose exit [ 34, true ]
